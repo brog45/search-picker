@@ -9,15 +9,14 @@
     <h1>Search</h1>
     <code id="search-term"></code>
     <ul>
-        <li><a class="search" href="https://en.wikipedia.org/wiki/Special:Search?search=xyzzy&go=Go&ns0=1">Wikipedia</a>
-        </li>
-        <li><a class="search" href="https://www.imdb.com/find/?q=xyzzy">IMDB</a></li>
-        <li><a class="search" href="https://www.merriam-webster.com/dictionary/xyzzy">Merriam-Webster Dictionary</a></li>
-        <li><a class="search" href="https://ahdictionary.com/word/search.html?q=xyzzy">American Heritage Dictionary</a></li>        
-        <li><a class="search" href="https://developer.mozilla.org/en-US/search?q=xyzzy">Mozilla Developer Network</a></li>
-        <li><a class="search" href="https://noai.duckduckgo.com/?q=xyzzy&noai=1">Duck Duck Go (without AI)</a></li>
-        <li><a class="search" href="https://www.duckduckgo.com/?q=xyzzy">Duck Duck Go</a></li>
-        <li><a class="search" href="https://www.google.com/search?q=xyzzy&newwindow=1">Google</a></li>
+        <li><a class="search" data-template="https://en.wikipedia.org/wiki/Special:Search?search=xyzzy&go=Go&ns0=1">Wikipedia</a></li>
+        <li><a class="search" data-template="https://www.imdb.com/find/?q=xyzzy">IMDB</a></li>
+        <li><a class="search" data-template="https://www.merriam-webster.com/dictionary/xyzzy">Merriam-Webster Dictionary</a></li>
+        <li><a class="search" data-template="https://ahdictionary.com/word/search.html?q=xyzzy">American Heritage Dictionary</a></li>        
+        <li><a class="search" data-template="https://developer.mozilla.org/en-US/search?q=xyzzy">Mozilla Developer Network</a></li>
+        <li><a class="search" data-template="https://noai.duckduckgo.com/?q=xyzzy&noai=1">Duck Duck Go (without AI)</a></li>
+        <li><a class="search" data-template="https://www.duckduckgo.com/?q=xyzzy">Duck Duck Go</a></li>
+        <li><a class="search" data-template="https://www.google.com/search?q=xyzzy&newwindow=1">Google</a></li>
     </ul>
     <script>
         (function () {
@@ -29,8 +28,8 @@
                     searchTerm.innerText = hash;
                 }
                 document.querySelectorAll("a.search").forEach(e => {
-                    var href = e.getAttribute("href");
-                    href = href.replace("xyzzy", encodeURI(hash));
+                    var template = e.dataset.template;
+                    var href = template.replace("xyzzy", encodeURI(hash));
                     e.setAttribute("href", href);
                 });
             }
