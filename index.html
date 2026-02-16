@@ -22,14 +22,14 @@
         (function () {
             "use strict";
             function populate() {
-                var hash = decodeURI(document.location.hash.replace(/^#/, ""));
+                var hash = decodeURIComponent(document.location.hash.replace(/^#/, ""));
                 var searchTerm = document.getElementById("search-term");
                 if (searchTerm) {
                     searchTerm.innerText = hash;
                 }
                 document.querySelectorAll("a.search").forEach(e => {
                     var template = e.dataset.template;
-                    var href = template.replace("xyzzy", encodeURI(hash));
+                    var href = template.replace("xyzzy", encodeURIComponent(hash));
                     e.setAttribute("href", href);
                 });
             }
