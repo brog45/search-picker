@@ -4,33 +4,48 @@
     <title>Search</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        ul {
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        button {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <h1>Search</h1>
     <code id="search-term"></code>
     <ul>
-        <li><a class="search" data-template="https://en.wikipedia.org/wiki/Special:Search?search=xyzzy&go=Go&ns0=1">Wikipedia</a></li>
-        <li><a class="search" data-template="https://www.imdb.com/find/?q=xyzzy">IMDB</a></li>
-        <li><a class="search" data-template="https://www.merriam-webster.com/dictionary/xyzzy">Merriam-Webster Dictionary</a></li>
-        <li><a class="search" data-template="https://ahdictionary.com/word/search.html?q=xyzzy">American Heritage Dictionary</a></li>        
-        <li><a class="search" data-template="https://developer.mozilla.org/en-US/search?q=xyzzy">Mozilla Developer Network</a></li>
-        <li><a class="search" data-template="https://noai.duckduckgo.com/?q=xyzzy&noai=1">Duck Duck Go (without AI)</a></li>
-        <li><a class="search" data-template="https://www.duckduckgo.com/?q=xyzzy">Duck Duck Go</a></li>
-        <li><a class="search" data-template="https://www.google.com/search?q=xyzzy&newwindow=1">Google</a></li>
+        <li><button class="search" data-template="https://en.wikipedia.org/wiki/Special:Search?search=xyzzy&go=Go&ns0=1">Wikipedia</button></li>
+        <li><button class="search" data-template="https://www.imdb.com/find/?q=xyzzy">IMDB</button></li>
+        <li><button class="search" data-template="https://www.merriam-webster.com/dictionary/xyzzy">Merriam-Webster Dictionary</button></li>
+        <li><button class="search" data-template="https://ahdictionary.com/word/search.html?q=xyzzy">American Heritage Dictionary</button></li>
+        <li><button class="search" data-template="https://developer.mozilla.org/en-US/search?q=xyzzy">Mozilla Developer Network</button></li>
+        <li><button class="search" data-template="https://noai.duckduckgo.com/?q=xyzzy&noai=1">Duck Duck Go (without AI)</button></li>
+        <li><button class="search" data-template="https://www.duckduckgo.com/?q=xyzzy">Duck Duck Go</button></li>
+        <li><button class="search" data-template="https://www.google.com/search?q=xyzzy&newwindow=1">Google</button></li>
     </ul>
     <script>
         (function () {
             "use strict";
+            let searchValue = "";
+            function buttonClick(event) {
+                var template = event.target.dataset.template;
+                var href = template.replace("xyzzy", encodeURIComponent(searchValue));
+                document.location = href;
+            }
             function populate() {
-                var hash = decodeURIComponent(document.location.hash.replace(/^#/, ""));
+                searchValue = decodeURIComponent(document.location.hash.replace(/^#/, ""));
                 var searchTerm = document.getElementById("search-term");
                 if (searchTerm) {
-                    searchTerm.innerText = hash;
+                    searchTerm.innerText = searchValue;
                 }
-                document.querySelectorAll("a.search").forEach(e => {
-                    var template = e.dataset.template;
-                    var href = template.replace("xyzzy", encodeURIComponent(hash));
-                    e.setAttribute("href", href);
+                document.querySelectorAll("button.search").forEach(e => {
+                    e.addEventListener("click", buttonClick);
                 });
             }
             window.onhashchange = populate;
