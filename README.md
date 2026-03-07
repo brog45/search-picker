@@ -8,3 +8,4 @@ I got annoyed sending all my searches to a search engine, when I usually just wa
 It occurred to me that the websites I usually want to go to already have their own search capabilites, so I can just search those sites. This simple static page to let me choose where to search. I use it as my default search engine in browsers that let me do that.
 
 ## TODO
+- [ ] add instructions for configuring browser to use this as search engine
