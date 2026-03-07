@@ -57,13 +57,13 @@
             function populate() {
                 let searchValue = decodeURIComponent(document.location.hash.replace(/^#/, ""));
                 searchTerm.value = searchValue;
-                document.querySelectorAll("button.search").forEach(e => {
-                    e.addEventListener("click", buttonClick);
-                });
                 searchTerm.focus();
             }
             window.onhashchange = populate;
             populate();
+            document.querySelectorAll("button.search").forEach(e => {
+                e.addEventListener("click", buttonClick);
+            });
         })();
     </script>
 </body>
