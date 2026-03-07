@@ -9,3 +9,4 @@ It occurred to me that the websites I usually want to go to already have their o
 
 ## TODO
 - [ ] add instructions for configuring browser to use this as search engine
+- [ ] add section describing features, design goals, and non-goals
