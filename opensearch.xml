@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Search Picker</ShortName>
+  <Description>Choose which site to search</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Url type="text/html" template="https://example.com/search.html#{searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://example.com/opensearch.xml" />
+</OpenSearchDescription>
